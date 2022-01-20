@@ -21,11 +21,16 @@ private:
     }
 public:
     int addDigits(int num) {
+//         if(num==0) return 0;
+//     while(no_of_digits(sum(num))!=1){
+//         num=sum(num);
+//     }
+//         return sum(num);
+        
+        //optimized approach
         if(num==0) return 0;
-    while(no_of_digits(sum(num))!=1){
-        num=sum(num);
-    }
-        return sum(num);
+        if(num%9==0) return 9;
+        return num%9;
     
     }
 };
