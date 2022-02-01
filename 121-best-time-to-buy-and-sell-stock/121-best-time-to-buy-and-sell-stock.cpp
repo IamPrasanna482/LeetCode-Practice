@@ -15,15 +15,15 @@ public:
     
     
     int maxProfit(vector<int>& prices) {
-//         int max_profit=0;
-//         int n=prices.size();
-//         for(int i=0;i<n-1;i++){
-//             int  x=MAXP(prices,i+1,n);
-//             if(x>prices[i]){
-//                 max_profit=max(max_profit,x-prices[i]);
-//             }
-//         }
-//         return max_profit;
+        // int max_profit=0;
+        // int n=prices.size();
+        // for(int i=0;i<n-1;i++){
+        //     int  x=MAXP(prices,i+1,n);
+        //     if(x>prices[i]){
+        //         max_profit=max(max_profit,x-prices[i]);
+        //     }
+        // }
+        // return max_profit;
     
         // approach 2(strivers)
     
@@ -32,6 +32,7 @@ public:
             int maxPro=0;
             for(int i=0;i<n;i++){
                 minPrice=min(minPrice,prices[i]);
+                // we will store the minimum price so far and then try to sell it everyday and check whether its the max profit or not;
                 maxPro=max(maxPro,prices[i]-minPrice);
             }
             return maxPro;
