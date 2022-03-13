@@ -11,7 +11,7 @@ public:
                 if(st.empty()) return false;    //initial chars are closing
                 char c=st.top();
                 st.pop();
-                if( (s[i]==')' && c=='(') || (s[i]=='}' && c=='{')                   || (s[i]==']' && c=='[')){
+                if( (s[i]==')' && c=='(') || (s[i]=='}' && c=='{') || (s[i]==']' && c=='[')){
                     
                 }
                 else{
