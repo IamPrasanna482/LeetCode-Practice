@@ -11,24 +11,24 @@ public:
         for(auto it:v) s+=it;
         return s;
     }
-    void printSubsetSum(int ind,vector<int> &arr,vector<int> ds,vector<int> &temp){
+    void printSubsetSum(int ind,int sum,vector<int> &arr,vector<int> ds,vector<int> &temp){
         if(ind>=arr.size()){
-            int sum=findSum(ds);
+            // int sum=findSum(ds);
             temp.push_back(sum);
             return;
         }
         
         ds.push_back(arr[ind]);
-        printSubsetSum(ind+1,arr,ds,temp);
+        printSubsetSum(ind+1,arr[ind]+sum,arr,ds,temp);
         
         ds.pop_back();
-        printSubsetSum(ind+1,arr,ds,temp);
+        printSubsetSum(ind+1,sum,arr,ds,temp);
     }
     vector<int> subsetSums(vector<int> arr, int N)
     {
         // Write Your Code here
         vector<int> ds,temp;
-        printSubsetSum(0,arr,ds,temp);
+        printSubsetSum(0,0,arr,ds,temp);
         return temp;
         
     }
