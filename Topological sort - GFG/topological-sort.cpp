@@ -19,20 +19,50 @@ void findTopoSort(int node, vector < int > & vis, stack < int > & st, vector < i
 	
 	//Function to return list containing vertices in Topological order. 
  vector < int > topoSort(int N, vector < int > adj[]) {
-      stack < int > st;
-      vector < int > vis(N, 0);
-      for (int i = 0; i < N; i++) {
-        if (vis[i] == 0) {
-          findTopoSort(i, vis, st, adj);
+     
+     //using dfs
+     
+    //   stack < int > st;
+    //   vector < int > vis(N, 0);
+    //   for (int i = 0; i < N; i++) {
+    //     if (vis[i] == 0) {
+    //       findTopoSort(i, vis, st, adj);
+    //     }
+    //   }
+    //   vector < int > topo;
+    //   while (!st.empty()) {
+    //     topo.push_back(st.top());
+    //     st.pop();
+    //   }
+    //   return topo;
+    
+    //using bfs
+    queue<int> q;
+    vector<int> indegree(N,0);
+    for(int i=0;i<N;i++){
+        for(auto it:adj[i]){
+            indegree[it]++;
         }
-      }
-      vector < int > topo;
-      while (!st.empty()) {
-        topo.push_back(st.top());
-        st.pop();
-      }
-      return topo;
-
+    }
+    
+    for(int i=0;i<N;i++){
+        if(indegree[i]==0){
+            q.push(i);
+        }
+    }
+    vector<int> ans;
+    while(!q.empty()){
+        int node=q.front();
+        q.pop();
+        ans.push_back(node);
+        for(auto it:adj[node]){
+            indegree[it]--;
+            if(indegree[it]==0){
+                q.push(it);
+            }
+        }
+    }
+    return ans;
     }
 	
 };
